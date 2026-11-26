@@ -1,6 +1,131 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 
+/* 09. 深淺色模式 */
+
+body.dark-mode {
+    background-color: #141c19;
+    color: #e1ede5;
+}
+
+body.dark-mode header {
+    background-color: #29483a;
+}
+
+body.dark-mode nav,
+body.dark-mode section {
+    background-color: #26342d;
+    color: #e1ede5;
+}
+
+body.dark-mode section h2,
+body.dark-mode section h3,
+body.dark-mode nav a {
+    color: #d8edc7;
+}
+
+body.dark-mode nav a:hover {
+    background-color: #35473e;
+}
+
+body.dark-mode #education {
+    background-color: #344534;
+}
+
+body.dark-mode #skills {
+    background-color: #353346;
+}
+
+body.dark-mode #learning {
+    background-color: #433a2c;
+}
+
+body.dark-mode #goals {
+    background-color: #2d433b;
+}
+
+body.dark-mode #contact {
+    background-color: #29483a;
+}
+
+body.dark-mode footer {
+    color: #b9c9bf;
+}
+
+/* 10. 浮動互動按鈕 */
+
+#themeToggle,
+#backToTop {
+    position: fixed;
+    right: 24px;
+    width: 48px;
+    height: 48px;
+    border: none;
+    border-radius: 50%;
+    background-color: #213d32;
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: transform 0.3s;
+}
+
+#themeToggle {
+    top: 24px;
+}
+
+#backToTop {
+    bottom: 24px;
+}
+
+#themeToggle:hover,
+#backToTop:hover {
+    transform: scale(1.1);
+}
+
+#themeToggle:focus-visible,
+#backToTop:focus-visible {
+    outline: 3px solid #779b80;
+    outline-offset: 4px;
+}
+
+/* 11. 卡片進場動畫 */
+
+section.reveal {
+    opacity: 0;
+    translate: 0 24px;
+    transition: opacity 0.6s,
+                translate 0.6s,
+                transform 0.3s,
+                box-shadow 0.3s;
+}
+
+section.reveal.visible {
+    opacity: 1;
+    translate: 0 0;
+}
+
+/* 尊重使用者的減少動畫設定 */
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    section,
+    section.reveal,
+    #themeToggle,
+    #backToTop {
+        transition: none;
+    }
+
+    section.reveal {
+        opacity: 1;
+        translate: none;
+    }
+}
+    
 <style>
 
     /* 01. 全站基本設定 */
@@ -191,6 +316,22 @@
     <title>我的個人網站</title>
 </head>
 
+<!-- 深淺色模式切換按鈕 -->
+<button id="themeToggle"
+        type="button"
+        aria-label="切換深淺色模式"
+        aria-pressed="false">
+    🌙
+</button>
+
+<!-- 返回頂部按鈕 -->
+<button id="backToTop"
+        type="button"
+        aria-label="返回頂部"
+        hidden>
+    ↑
+</button>
+    
 <body>
 
     <!-- 網站頁首 -->
@@ -295,6 +436,164 @@
         <p>Copyright © 2026 Personal Portfolio</p>
     </footer>
 
+<!-- 深淺色模式切換按鈕 -->
+<button id="themeToggle"
+        type="button"
+        aria-label="切換深淺色模式"
+        aria-pressed="false">
+    🌙
+</button>
+
+<!-- 返回頂部按鈕 -->
+<button id="backToTop"
+        type="button"
+        aria-label="返回頂部"
+        hidden>
+    ↑
+</button>
+    
+  <script>
+
+    // 01. 取得網頁元素
+
+    const themeToggle =
+        document.getElementById("themeToggle");
+
+    const backToTop =
+        document.getElementById("backToTop");
+
+
+    // 02. 更新網站主題
+
+    function setTheme(isDark) {
+
+        document.body.classList.toggle(
+            "dark-mode", isDark
+        );
+
+        themeToggle.textContent =
+            isDark ? "☀️" : "🌙";
+
+        themeToggle.setAttribute(
+            "aria-pressed", String(isDark)
+        );
+
+        try {
+            localStorage.setItem(
+                "theme",
+                isDark ? "dark" : "light"
+            );
+        } catch (error) {
+            // 無法儲存時仍可切換主題
+        }
+    }
+
+
+    // 03. 讀取之前的主題設定
+
+    try {
+        const savedTheme =
+            localStorage.getItem("theme");
+
+        setTheme(savedTheme === "dark");
+
+    } catch (error) {
+        setTheme(false);
+    }
+
+
+    // 04. 點擊按鈕切換深淺色
+
+    themeToggle.addEventListener("click", function() {
+
+        const isDark =
+            document.body.classList.contains(
+                "dark-mode"
+            );
+
+        setTheme(!isDark);
+
+    });
+
+
+    // 05. 判斷網頁滾動位置
+
+    function updateBackToTop() {
+
+        backToTop.hidden = window.scrollY <= 300;
+
+    }
+
+    window.addEventListener(
+        "scroll",
+        updateBackToTop,
+        { passive: true }
+    );
+
+    updateBackToTop();
+
+
+    // 06. 返回網頁頂部
+
+    backToTop.addEventListener("click", function() {
+
+        const reduceMotion = window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+        ).matches;
+
+        window.scrollTo({
+            top: 0,
+            behavior: reduceMotion ? "instant" : "smooth"
+        });
+
+    });
+
+
+    // 07. 卡片滾動進場動畫
+
+    const sections =
+        document.querySelectorAll("main section");
+
+    const reduceMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    if ("IntersectionObserver" in window
+        && !reduceMotion) {
+
+        const observer = new IntersectionObserver(
+            function(entries) {
+
+                entries.forEach(function(entry) {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add(
+                            "visible"
+                        );
+
+                        observer.unobserve(entry.target);
+
+                    }
+
+                });
+
+            },
+            { threshold: 0.05 }
+        );
+
+        sections.forEach(function(section) {
+
+            section.classList.add("reveal");
+
+            observer.observe(section);
+
+        });
+
+    }
+
+</script>  
+    
 </body>
 
 </html>
