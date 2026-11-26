@@ -1,130 +1,5 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
-
-/* 09. 深淺色模式 */
-
-body.dark-mode {
-    background-color: #141c19;
-    color: #e1ede5;
-}
-
-body.dark-mode header {
-    background-color: #29483a;
-}
-
-body.dark-mode nav,
-body.dark-mode section {
-    background-color: #26342d;
-    color: #e1ede5;
-}
-
-body.dark-mode section h2,
-body.dark-mode section h3,
-body.dark-mode nav a {
-    color: #d8edc7;
-}
-
-body.dark-mode nav a:hover {
-    background-color: #35473e;
-}
-
-body.dark-mode #education {
-    background-color: #344534;
-}
-
-body.dark-mode #skills {
-    background-color: #353346;
-}
-
-body.dark-mode #learning {
-    background-color: #433a2c;
-}
-
-body.dark-mode #goals {
-    background-color: #2d433b;
-}
-
-body.dark-mode #contact {
-    background-color: #29483a;
-}
-
-body.dark-mode footer {
-    color: #b9c9bf;
-}
-
-/* 10. 浮動互動按鈕 */
-
-#themeToggle,
-#backToTop {
-    position: fixed;
-    right: 24px;
-    width: 48px;
-    height: 48px;
-    border: none;
-    border-radius: 50%;
-    background-color: #213d32;
-    color: white;
-    font-size: 22px;
-    cursor: pointer;
-    z-index: 1000;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    transition: transform 0.3s;
-}
-
-#themeToggle {
-    top: 24px;
-}
-
-#backToTop {
-    bottom: 24px;
-}
-
-#themeToggle:hover,
-#backToTop:hover {
-    transform: scale(1.1);
-}
-
-#themeToggle:focus-visible,
-#backToTop:focus-visible {
-    outline: 3px solid #779b80;
-    outline-offset: 4px;
-}
-
-/* 11. 卡片進場動畫 */
-
-section.reveal {
-    opacity: 0;
-    translate: 0 24px;
-    transition: opacity 0.6s,
-                translate 0.6s,
-                transform 0.3s,
-                box-shadow 0.3s;
-}
-
-section.reveal.visible {
-    opacity: 1;
-    translate: 0 0;
-}
-
-/* 尊重使用者的減少動畫設定 */
-
-@media (prefers-reduced-motion: reduce) {
-    html {
-        scroll-behavior: auto;
-    }
-
-    section,
-    section.reveal,
-    #themeToggle,
-    #backToTop {
-        transition: none;
-    }
-
-    section.reveal {
-        opacity: 1;
-        translate: none;
-    }
-}
     
 <style>
 
@@ -308,6 +183,131 @@ section.reveal.visible {
         }
     }
 
+/* 09. 深淺色模式 */
+
+body.dark-mode {
+    background-color: #141c19;
+    color: #e1ede5;
+}
+
+body.dark-mode header {
+    background-color: #29483a;
+}
+
+body.dark-mode nav,
+body.dark-mode section {
+    background-color: #26342d;
+    color: #e1ede5;
+}
+
+body.dark-mode section h2,
+body.dark-mode section h3,
+body.dark-mode nav a {
+    color: #d8edc7;
+}
+
+body.dark-mode nav a:hover {
+    background-color: #35473e;
+}
+
+body.dark-mode #education {
+    background-color: #344534;
+}
+
+body.dark-mode #skills {
+    background-color: #353346;
+}
+
+body.dark-mode #learning {
+    background-color: #433a2c;
+}
+
+body.dark-mode #goals {
+    background-color: #2d433b;
+}
+
+body.dark-mode #contact {
+    background-color: #29483a;
+}
+
+body.dark-mode footer {
+    color: #b9c9bf;
+}
+
+/* 10. 浮動互動按鈕 */
+
+#themeToggle,
+#backToTop {
+    position: fixed;
+    right: 24px;
+    width: 48px;
+    height: 48px;
+    border: none;
+    border-radius: 50%;
+    background-color: #213d32;
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: transform 0.3s;
+}
+
+#themeToggle {
+    top: 24px;
+}
+
+#backToTop {
+    bottom: 24px;
+}
+
+#themeToggle:hover,
+#backToTop:hover {
+    transform: scale(1.1);
+}
+
+#themeToggle:focus-visible,
+#backToTop:focus-visible {
+    outline: 3px solid #779b80;
+    outline-offset: 4px;
+}
+
+/* 11. 卡片進場動畫 */
+
+section.reveal {
+    opacity: 0;
+    translate: 0 24px;
+    transition: opacity 0.6s,
+                translate 0.6s,
+                transform 0.3s,
+                box-shadow 0.3s;
+}
+
+section.reveal.visible {
+    opacity: 1;
+    translate: 0 0;
+}
+
+/* 尊重使用者的減少動畫設定 */
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    section,
+    section.reveal,
+    #themeToggle,
+    #backToTop {
+        transition: none;
+    }
+
+    section.reveal {
+        opacity: 1;
+        translate: none;
+    }
+}
+    
 </style>    
     
 <head>
