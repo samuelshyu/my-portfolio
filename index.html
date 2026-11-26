@@ -1,6 +1,190 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 
+<style>
+
+    /* 01. 全站基本設定 */
+    * {
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        margin: 0;
+        background-color: #f3f4f0;
+        color: #24382f;
+        font-family: "Microsoft JhengHei", Arial, sans-serif;
+        line-height: 1.8;
+    }
+
+    /* 02. 網站頁首 */
+    header {
+        max-width: 1100px;
+        margin: 30px auto;
+        padding: 70px 40px;
+        background-color: #213d32;
+        color: white;
+        border-radius: 28px;
+    }
+
+    header h1 {
+        font-size: 42px;
+        margin: 0 0 15px;
+        line-height: 1.4;
+    }
+
+    header p {
+        color: #d1e3d6;
+        font-size: 18px;
+    }
+
+    /* 03. 網站導覽列 */
+    nav {
+        max-width: 1100px;
+        margin: 20px auto;
+        padding: 16px;
+        background-color: white;
+        border-radius: 16px;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    nav a {
+        color: #24382f;
+        text-decoration: none;
+        padding: 8px 14px;
+        border-radius: 10px;
+        transition: background-color 0.3s;
+    }
+
+    nav a:hover {
+        background-color: #e0e9d7;
+    }
+
+    /* 04. Bento Grid 網格布局 */
+    main {
+        max-width: 1100px;
+        margin: 30px auto;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 20px;
+    }
+
+    /* 05. 卡片基本樣式 */
+    section {
+        background-color: white;
+        padding: 28px;
+        border-radius: 24px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    section:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    section h2 {
+        font-size: 25px;
+        margin-top: 0;
+        color: #213d32;
+    }
+
+    section h3 {
+        font-size: 17px;
+        color: #41674f;
+    }
+
+    /* 06. 各區塊的大小與配色 */
+    #about {
+        grid-column: span 2;
+    }
+
+    #education {
+        background-color: #e0e9d7;
+    }
+
+    #skills {
+        background-color: #e8e7f3;
+    }
+
+    #portfolio {
+        grid-column: span 2;
+    }
+
+    #learning {
+        background-color: #f2e8d8;
+    }
+
+    #goals {
+        background-color: #dce9e0;
+    }
+
+    #contact {
+        background-color: #213d32;
+        color: white;
+    }
+
+    #contact h2 {
+        color: white;
+    }
+
+    #contact a {
+        color: #d8edc7;
+        text-decoration: none;
+    }
+
+    /* 07. 網站頁尾 */
+    footer {
+        text-align: center;
+        padding: 30px;
+        color: #64756b;
+        font-size: 14px;
+    }
+
+    /* 08. 基礎手機與平板適配 */
+    @media (max-width: 1160px) {
+        header, nav, main {
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+    }
+
+    @media (max-width: 900px) {
+        main {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+
+    @media (max-width: 600px) {
+        main {
+            grid-template-columns: 1fr;
+        }
+
+        #about, #portfolio {
+            grid-column: span 1;
+        }
+
+        header {
+            padding: 40px 24px;
+        }
+
+        header h1 {
+            font-size: 28px;
+        }
+
+        section {
+            padding: 22px;
+        }
+    }
+
+</style>    
+    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
