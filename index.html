@@ -152,8 +152,28 @@
            06. 各區塊的大小與配色
         ======================================== */
 
-        #about {
-            grid-column: span 2;
+        #about,
+        #experience {
+            grid-column: span 1;
+        }
+
+        #experience {
+            align-self: start;
+            padding: 20px;
+            background-color: #dce9e0;
+        }
+
+        #experience h2 {
+            font-size: 21px;
+            margin-bottom: 8px;
+        }
+
+        #experience h3 {
+            margin: 0;
+        }
+
+        #experience p {
+            margin: 4px 0 0;
         }
 
         #education {
@@ -235,7 +255,7 @@
                 grid-template-columns: 1fr;
             }
 
-            #about, #portfolio {
+            #about, #experience, #portfolio {
                 grid-column: span 1;
             }
 
@@ -290,6 +310,10 @@
 
         body.dark-mode #education {
             background-color: #344534;
+        }
+
+        body.dark-mode #experience {
+            background-color: #2d433b;
         }
 
         body.dark-mode #skills {
@@ -438,6 +462,8 @@
 
         <a href="#about">關於我</a>
 
+        <a href="#experience">工作經歷</a>
+
         <a href="#education">學歷</a>
 
         <a href="#skills">專業技能</a>
@@ -470,6 +496,19 @@
                 對資料分析、程式設計及人工智慧應用
                 具有濃厚的興趣。
             </p>
+
+        </section>
+
+
+        <!-- 工作經歷 -->
+
+        <section id="experience">
+
+            <h2>工作經歷</h2>
+
+            <h3>桃園市立龍潭高中</h3>
+
+            <p>行政教師</p>
 
         </section>
 
@@ -605,9 +644,13 @@
             <h2>未來目標</h2>
 
             <p>
-                結合數學、統計、資料分析與人工智慧，
-                培養跨領域的專業能力，
-                並將所學應用於實際工作。
+                明年預計報考 iPAS AI 應用規劃師初級與中級，
+                持續強化人工智慧應用能力。
+            </p>
+
+            <p>
+                目前於 nSchool 學習資料分析、資料收集與資料庫，
+                並持續製作作品專案，累積實務經驗。
             </p>
 
         </section>
