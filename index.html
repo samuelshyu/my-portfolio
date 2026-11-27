@@ -151,8 +151,112 @@
         grid-column: span 2;
       }
 
+      #about .about-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease;
+      }
+
+      #about.expanded .about-content {
+        max-height: 2000px;
+      }
+
+      .about-stats {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 18px;
+      }
+
+      .about-stat {
+        min-height: 120px;
+        padding: 18px 12px;
+        background-color: #eef3e9;
+        border-radius: 12px;
+        text-align: center;
+      }
+
+      .about-stat strong,
+      .about-stat span {
+        display: block;
+      }
+
+      .about-stat strong {
+        font-size: 24px;
+        color: #213d32;
+      }
+
+      .about-stat span {
+        margin-top: 2px;
+        font-size: 12px;
+        color: #64756b;
+      }
+
+      .about-details {
+        margin-top: 20px;
+        padding-top: 8px;
+        border-top: 1px solid #d5dfd1;
+      }
+
+      .about-details h3 {
+        margin: 18px 0 8px;
+        padding-left: 8px;
+        border-left: 3px solid #41674f;
+        font-size: 16px;
+      }
+
+      .about-details p {
+        margin: 6px 0;
+        font-size: 14px;
+      }
+
+      .goal-list {
+        margin: 0;
+        padding-left: 22px;
+      }
+
+      .goal-list li {
+        padding-left: 4px;
+        margin-bottom: 10px;
+      }
+
+      .about-toggle {
+        width: 100%;
+        margin-top: 18px;
+        padding: 10px 14px;
+        border: 0;
+        border-radius: 8px;
+        background-color: #213d32;
+        color: white;
+        cursor: pointer;
+        font: inherit;
+      }
+
+      .about-toggle:hover {
+        background-color: #41674f;
+      }
+
       #education {
         background-color: #e0e9d7;
+      }
+
+      .experience-card {
+        margin-top: 28px;
+        padding: 20px;
+      }
+
+      .experience-card h2 {
+        margin-bottom: 16px;
+        font-size: 21px;
+      }
+
+      .experience-card h3 {
+        margin: 0 0 8px;
+        font-size: 18px;
+      }
+
+      .experience-card p {
+        margin: 6px 0 0;
       }
 
       #skills {
@@ -270,6 +374,26 @@
       body.dark-mode .project-link {
         background-color: #41674f;
         color: white;
+      }
+
+      body.dark-mode .about-toggle {
+        background-color: #41674f;
+      }
+
+      body.dark-mode .about-stat {
+        background-color: #344534;
+      }
+
+      body.dark-mode .about-stat strong {
+        color: #d8edc7;
+      }
+
+      body.dark-mode .about-stat span {
+        color: #b9c9bf;
+      }
+
+      body.dark-mode .about-details {
+        border-top-color: #4a5d50;
       }
 
       body.dark-mode nav a:hover {
@@ -436,10 +560,68 @@
       <section id="about">
         <h2>關於我</h2>
 
+        <p class="about-lead">以數據理解問題，以邏輯建立方法，以科技創造價值。</p>
+
         <p>
-          我具有數學與統計的學習背景， 對資料分析、程式設計及人工智慧應用
-          具有濃厚的興趣。
+          我具備數學與統計專業背景，以及兩年半的行政管理經驗，擅長邏輯分析、資料處理、流程優化與跨部門協作，曾於 112－113 學年度連續獲獎校方頒發的績優行政獎。
         </p>
+
+        <p>
+          過去的教師經歷使我培養了需求理解、創新思維、環境適應及複雜資訊轉譯能力。目前正積極精進資料科技與生成式 AI 應用能力，期望將跨領域經驗轉化為科技產業的實務價值。
+        </p>
+
+        <div class="about-stats">
+          <div class="about-stat">
+            <strong>2.5 年</strong>
+            <span>行政管理經驗</span>
+          </div>
+
+          <div class="about-stat">
+            <strong>1,200+</strong>
+            <span>學生資料處理</span>
+          </div>
+
+          <div class="about-stat">
+            <strong>一週 → 2 天</strong>
+            <span>作業流程改善</span>
+          </div>
+
+          <div class="about-stat">
+            <strong>連續 2 年</strong>
+            <span>績優行政獎</span>
+          </div>
+        </div>
+
+        <div class="about-content" id="aboutContent">
+          <div class="about-details">
+            <h3>01｜學習背景與興趣領域</h3>
+            <p>我具有數學與統計的學習背景，對資料分析、程式設計與人工智慧應用保持高度興趣，並持續培養以數據拆解問題、整理資訊與找出規律的能力。</p>
+
+            <h3>02｜行政管理、流程優化與績效成果</h3>
+            <p>曾負責學生資料、註冊作業與行政流程管理，熟悉資料整理、核對、彙整與跨單位溝通。透過重新設計作業流程，將原本需要一週的工作縮短至兩天完成。</p>
+            <p>在兼顧教學與多項行政業務的工作環境下，我持續重視工作品質、執行效率、資訊正確性及專業責任，並於 <strong>112、113 學年度連續兩年榮獲校方頒發的績優行政獎</strong>，行政工作表現獲得肯定。</p>
+
+            <h3>03｜跨部門協作與任務管理</h3>
+            <p>在工作中需要與教師、行政同仁、學生及家長協作，培養我釐清需求、安排任務優先順序與追蹤進度的能力，並能將複雜資訊轉換成容易理解的內容。</p>
+
+            <h3>04｜創新與數位科技應用</h3>
+            <p>持續學習生成式 AI、資料分析與數位工具應用，嘗試將科技工具融入日常工作，提升資料處理效率與問題解決能力。</p>
+
+            <h3>05｜需求理解與溝通應變</h3>
+            <p>面對不同對象與需求時，能先理解問題脈絡，再以清楚、具體的方式溝通解決方案，並依照實際狀況調整執行方式。</p>
+
+          </div>
+        </div>
+
+        <button
+          class="about-toggle"
+          id="aboutToggle"
+          type="button"
+          aria-controls="aboutContent"
+          aria-expanded="false"
+        >
+          閱讀完整自傳 ↓
+        </button>
       </section>
 
       <!-- 工作經歷與學歷 -->
@@ -460,11 +642,16 @@
           <li>應用統計</li>
         </ul>
 
-        <h2>工作經歷</h2>
+        <div class="experience-card">
+          <h2>工作經歷</h2>
 
-        <h4>桃園市立龍潭高中</h4>
+          <h3>桃園市立龍潭高中</h3>
 
-        <p>行政教師</p>
+          <p>高中數學老師兼註冊組長</p>
+
+          <p>行政管理經驗｜2.5 年</p>
+
+        </div>
 
       </section>
 
@@ -556,14 +743,10 @@
       <section id="goals">
         <h2>未來目標</h2>
 
-        <p>
-          明年預計報考 iPAS AI 應用規劃師初級與中級， 持續強化人工智慧應用能力。
-        </p>
-
-        <p>
-          目前於 nSchool 學習資料分析、資料收集與資料庫，
-          並持續製作作品專案，累積實務經驗。
-        </p>
+        <ul class="goal-list">
+          <li>明年預計報考 iPAS AI 應用規劃師初級與中級，持續強化人工智慧應用能力。</li>
+          <li>目前於 nSchool 學習資料分析、資料收集與資料庫，並持續製作作品專案，累積實務經驗。</li>
+        </ul>
       </section>
 
       <!-- 聯絡方式 -->
@@ -621,6 +804,10 @@
 
       const backToTop = document.getElementById("backToTop");
 
+      const about = document.getElementById("about");
+
+      const aboutToggle = document.getElementById("aboutToggle");
+
       // 02. 更新網站主題
 
       function setTheme(isDark) {
@@ -655,7 +842,18 @@
         setTheme(!isDark);
       });
 
-      // 05. 判斷網頁滾動位置
+      // 05. 展開或收合關於我
+
+      aboutToggle.addEventListener("click", function () {
+        const isExpanded = about.classList.toggle("expanded");
+
+        aboutToggle.setAttribute("aria-expanded", String(isExpanded));
+        aboutToggle.textContent = isExpanded
+          ? "收合自傳 ↑"
+          : "閱讀完整自傳 ↓";
+      });
+
+      // 06. 判斷網頁滾動位置
 
       function updateBackToTop() {
         backToTop.hidden = window.scrollY <= 300;
@@ -665,7 +863,7 @@
 
       updateBackToTop();
 
-      // 06. 返回網頁頂部
+      // 07. 返回網頁頂部
 
       backToTop.addEventListener("click", function () {
         const reduceMotion = window.matchMedia(
@@ -679,7 +877,7 @@
         });
       });
 
-      // 07. 卡片滾動進場動畫
+      // 08. 卡片滾動進場動畫
 
       const sections = document.querySelectorAll("main section");
 
